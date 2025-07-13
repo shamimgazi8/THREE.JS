@@ -1,7 +1,13 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls, useGLTF, Html } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  useGLTF,
+  Html,
+  Loader,
+} from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
 import ColorDot from "./ColorDot";
 import SizeSelector from "./SizeSelector";
@@ -80,6 +86,8 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
 
   const [triggerRotation, setTriggerRotation] = useState(false);
 
+  useGLTF.preload("/iphone-16-free/iphone-v2.glb");
+
   useEffect(() => {
     if (isInView && !hideControls) {
       setTriggerRotation(true);
@@ -135,31 +143,28 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
       </h1>
 
       <div className="h-[80%]" ref={canvasContainerRef}>
-        {isInView && (
-          <Canvas
-            camera={{ position: [0, 0, 3], fov: 45 }}
-            dpr={[1, 2]}
-            shadows
+        <Canvas camera={{ position: [0, 0, 3], fov: 45 }} dpr={[1, 2]} shadows>
+          <ambientLight intensity={0.8} />
+          <directionalLight position={[2, 4, 4]} intensity={2} />
+          <Environment preset="night" background={false} />
+          <Suspense
+            fallback={
+              <Html>
+                <p className="text-white text-lg">Loading iPhone...</p>
+              </Html>
+            }
           >
-            <ambientLight intensity={0.8} />
-            <directionalLight position={[2, 4, 4]} intensity={2} />
-            <Environment preset="night" background={false} />
-            <Suspense
-              fallback={
-                <Html>
-                  <p>Loading iPhone...</p>
-                </Html>
-              }
-            >
+            {isInView && (
               <Model
                 scale={scale}
                 triggerRotation={triggerRotation}
                 onRotateComplete={() => {}}
               />
-            </Suspense>
-            <OrbitControls enableZoom={false} target={[0, 0, 0]} />
-          </Canvas>
-        )}
+            )}
+          </Suspense>
+          <OrbitControls enableZoom={false} target={[0, 0, 0]} />
+        </Canvas>
+        <Loader />
       </div>
 
       <motion.div
