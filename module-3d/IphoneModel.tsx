@@ -28,7 +28,7 @@ function Model({
   triggerRotation: boolean;
   onRotateComplete: () => void;
 }) {
-  const gltf = useGLTF("/iphone-16-free/source/iphone.glb");
+  const gltf = useGLTF("/iphone-16-free/iphone-v2.glb");
   const modelRef = useRef<THREE.Group>(null);
   const rotatedRef = useRef(false);
 
