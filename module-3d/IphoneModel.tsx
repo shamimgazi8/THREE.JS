@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import { Environment, OrbitControls, useGLTF, Html } from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
 import ColorDot from "./ColorDot";
 import SizeSelector from "./SizeSelector";
@@ -33,7 +33,6 @@ function Model({
   const rotatedRef = useRef(false);
 
   useEffect(() => {
-    // Reset rotation state when triggerRotation toggles true
     if (triggerRotation) {
       rotatedRef.current = false;
       if (modelRef.current) {
@@ -79,10 +78,8 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
     once: false,
   });
 
-  // Control to trigger rotation each time model comes into view
   const [triggerRotation, setTriggerRotation] = useState(false);
 
-  // When isInView changes, toggle triggerRotation
   useEffect(() => {
     if (isInView && !hideControls) {
       setTriggerRotation(true);
@@ -97,7 +94,7 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring" as const,
+        type: "spring",
         bounce: 0.4,
         duration: 1,
         staggerChildren: 0.15,
@@ -111,7 +108,7 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring" as const,
+        type: "spring",
         bounce: 0.4,
         duration: 1,
       },
@@ -138,21 +135,31 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
       </h1>
 
       <div className="h-[80%]" ref={canvasContainerRef}>
-        <Canvas camera={{ position: [0, 0, 3], fov: 45 }}>
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[2, 4, 4]} intensity={2} />
-          <Environment preset="night" />
-          <Suspense fallback={null}>
-            <Model
-              scale={scale}
-              triggerRotation={triggerRotation}
-              onRotateComplete={() => {
-                // Optional: could do something on complete
-              }}
-            />
-          </Suspense>
-          <OrbitControls enableZoom={false} target={[0, 0, 0]} />
-        </Canvas>
+        {isInView && (
+          <Canvas
+            camera={{ position: [0, 0, 3], fov: 45 }}
+            dpr={[1, 2]}
+            shadows
+          >
+            <ambientLight intensity={0.8} />
+            <directionalLight position={[2, 4, 4]} intensity={2} />
+            <Environment preset="night" background={false} />
+            <Suspense
+              fallback={
+                <Html>
+                  <p>Loading iPhone...</p>
+                </Html>
+              }
+            >
+              <Model
+                scale={scale}
+                triggerRotation={triggerRotation}
+                onRotateComplete={() => {}}
+              />
+            </Suspense>
+            <OrbitControls enableZoom={false} target={[0, 0, 0]} />
+          </Canvas>
+        )}
       </div>
 
       <motion.div
@@ -162,7 +169,7 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full px-4 z-40"
       >
         <p className="text-center text-sm mb-2">
-          {selectedSize}&quot; iPhone 16 Pro in {selectedColor.name}
+          {selectedSize}" iPhone 16 Pro in {selectedColor.name}
         </p>
         <motion.div
           variants={itemVariants}
