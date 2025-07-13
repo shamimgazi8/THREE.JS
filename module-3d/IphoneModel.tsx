@@ -1,13 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  Environment,
-  OrbitControls,
-  useGLTF,
-  Html,
-  Loader,
-} from "@react-three/drei";
+import { Environment, OrbitControls, useGLTF, Html } from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
 import ColorDot from "./ColorDot";
 import SizeSelector from "./SizeSelector";
@@ -86,15 +80,27 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
 
   const [triggerRotation, setTriggerRotation] = useState(false);
 
-  useGLTF.preload("/iphone-16-free/iphone-v2.glb");
-
+  // Delay Environment loading until idle
+  const [envLoaded, setEnvLoaded] = useState(false);
   useEffect(() => {
     if (isInView && !hideControls) {
       setTriggerRotation(true);
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(() => {
+          setEnvLoaded(true);
+        });
+      } else {
+        // fallback for browsers without requestIdleCallback
+        setTimeout(() => setEnvLoaded(true), 2000);
+      }
     } else {
       setTriggerRotation(false);
+      setEnvLoaded(false);
     }
   }, [isInView, hideControls]);
+
+  // Preload model early
+  useGLTF.preload("/iphone-16-free/iphone-v2.glb");
 
   const containerVariants: Variants = {
     hidden: { opacity: 0, y: 70 },
@@ -143,28 +149,42 @@ export default function IphoneModel({ hideControls }: IphoneModelProps) {
       </h1>
 
       <div className="h-[80%]" ref={canvasContainerRef}>
-        <Canvas camera={{ position: [0, 0, 3], fov: 45 }} dpr={[1, 2]} shadows>
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[2, 4, 4]} intensity={2} />
-          <Environment preset="night" background={false} />
-          <Suspense
-            fallback={
-              <Html>
-                <p className="text-white text-lg">Loading iPhone...</p>
-              </Html>
-            }
+        {isInView && (
+          <Canvas
+            camera={{ position: [0, 0, 3], fov: 45 }}
+            dpr={[1, 2]}
+            shadows
           >
-            {isInView && (
+            <ambientLight intensity={0.8} />
+            <directionalLight position={[2, 4, 4]} intensity={2} />
+
+            <Suspense
+              fallback={
+                <Html>
+                  <p className="text-white">Loading iPhone...</p>
+                </Html>
+              }
+            >
               <Model
                 scale={scale}
                 triggerRotation={triggerRotation}
                 onRotateComplete={() => {}}
               />
+            </Suspense>
+
+            {/* Delay Environment until idle */}
+            {envLoaded && (
+              <Suspense fallback={null}>
+                <Environment
+                  files="/hdr/dikhololo_night_1k.hdr"
+                  background={false}
+                />
+              </Suspense>
             )}
-          </Suspense>
-          <OrbitControls enableZoom={false} target={[0, 0, 0]} />
-        </Canvas>
-        <Loader />
+
+            <OrbitControls enableZoom={false} target={[0, 0, 0]} />
+          </Canvas>
+        )}
       </div>
 
       <motion.div
