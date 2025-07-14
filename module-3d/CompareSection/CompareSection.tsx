@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const CompareSection = () => {
   return (
-    <div className="bg-black text-white py-20 w-[80%] m-auto rounded-3xl">
+    <div className="bg-black text-white py-20 md:w-[80%] m-auto rounded-3xl">
       <div className="max-w-4xl mx-auto px-4 text-center">
         {/* Images and Titles */}
         <div className="flex flex-col md:flex-row justify-around items-center gap-10">

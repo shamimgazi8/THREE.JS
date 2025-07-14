@@ -38,10 +38,10 @@ const DetailsSection = () => {
       </div>
 
       {/* Image Gallery */}
-      <div className=" flex justify-end items-end ">
+      <div className="w-full">
         <AppleCarousel />
       </div>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 mt-[150px]">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 mt-[50px]">
         {/* Left Column Text */}
         <div className="mx-auto md:mx-0 md:w-[70%] text-center md:text-left">
           <p className="text-[20px] leading-relaxed text-white/50 font-semibold">
@@ -56,7 +56,7 @@ const DetailsSection = () => {
         </div>
 
         {/* Right Column Text */}
-        <div className="mx-auto md:mx-0 md:w-[70%] text-center md:text-left">
+        <div className="mx-auto md:mx-0 md:w-[70%] text-center md:text-left ">
           <p className="text-[20px] leading-relaxed text-white/50 font-semibold">
             iPhone 16 Pro is splash, water, and dust resistant.⁴ It also has our
             latest-generation Ceramic Shield material that’s{" "}

@@ -71,14 +71,14 @@ const Home = () => {
       </section>
 
       {/* Section 4 */}
-      <section className="flex justify-center items-center flex-col w-[65%] m-auto">
+      <section className="flex justify-center items-center flex-col w-[85%] m-auto mt-15">
         <HeroText />
 
         <div className="w-full mt-[100px]">
           <Image
             src={"/iphone-cover.png"}
             alt="iphone cover"
-            width={1500}
+            width={1900}
             height={800}
             className="object-cover"
             layout="responsive"
@@ -89,9 +89,9 @@ const Home = () => {
       <section className=" min-h-screen bg-gradient-to-t from-[#1d1d1f] to-transparent">
         <ProductivityTabsSection />
       </section>
-      <section className=" bg-[#1d1d1f] p-10">
+      <section className=" bg-[#1d1d1f] md:p-10 p-2">
         <div className=" w-[80%] m-auto">
-          <h1 className=" text-5xl 5 mb-10 font-semibold ">
+          <h1 className=" md:text-5xl text-2xl 5 mb-10 font-semibold ">
             Keep exploring iPhone.
           </h1>
         </div>

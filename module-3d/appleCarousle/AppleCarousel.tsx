@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import Image from "next/image";
 
@@ -25,6 +25,24 @@ const slides = [
 
 const AppleCarousel = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [leftPadding, setLeftPadding] = useState(0);
+
+  useEffect(() => {
+    // Calculate how much to pad-left to center the first slide
+    const updatePadding = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const slideWidth = containerWidth * 0.85; // match min-w-[85%]
+        const padding = (containerWidth - slideWidth) / 1;
+        setLeftPadding(padding);
+      }
+    };
+
+    updatePadding();
+    window.addEventListener("resize", updatePadding);
+
+    return () => window.removeEventListener("resize", updatePadding);
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (containerRef.current) {
@@ -37,46 +55,50 @@ const AppleCarousel = () => {
   };
 
   return (
-    <div className="relative text-white py-14 overflow-hidden">
-      {/* Scrollable container */}
-      <div
-        ref={containerRef}
-        className="flex gap-6 overflow-x-hidden scroll-smooth snap-x snap-mandatory px-8"
-      >
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className="min-w-[85%] md:min-w-[50%] lg:min-w-[40%] snap-center p-3"
-          >
-            <div className="relative w-full h-[450px] rounded-xl overflow-hidden shadow-lg bg-black">
-              <Image
-                src={slide.img}
-                alt={`iPhone ${index + 1}`}
-                layout="fill"
-                objectFit="contain"
-              />
+    <>
+      <div className="relative text-white py-14 overflow-hidden">
+        {/* Scrollable container */}
+        <div
+          ref={containerRef}
+          className="flex  overflow-x-hidden scroll-smooth snap-x snap-mandatory gap-5"
+          style={{ paddingLeft: `${leftPadding}px`, paddingRight: "32px" }} // 32px right padding for arrow spacing
+        >
+          {slides.map((slide, index) => (
+            <div key={index} className="snap-center">
+              <div className="md:h-[580px] md:w-[560px] h-[280px] w-[260px] overflow-hidden  rounded-3xl relative">
+                <Image
+                  src={slide.img}
+                  alt={`iPhone ${index + 1}`}
+                  width={560}
+                  height={580}
+                  objectFit="contain"
+                  className="rounded-xl"
+                />
+              </div>
+              <p className="text-[18px] font-semibold mt-5 text-[#ebc9b6] text-start w-[70%]">
+                {slide.title}
+              </p>
             </div>
-            <p className="text-base mt-5 text-gray-300 text-center">
-              {slide.title}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Arrows */}
-      <button
-        onClick={() => scroll("left")}
-        className="absolute left-5 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/50 hover:bg-black transition z-10"
-      >
-        <IoChevronBack size={20} />
-      </button>
-      <button
-        onClick={() => scroll("right")}
-        className="absolute right-5 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/50 hover:bg-black transition z-10"
-      >
-        <IoChevronForward size={20} />
-      </button>
-    </div>
+      <div className="flex justify-end items-end w-[95%] gap-8">
+        <button
+          onClick={() => scroll("left")}
+          className=" -translate-y-1/2 p-2.5 rounded-full bg-white/30 hover:bg-black transition z-10"
+        >
+          <IoChevronBack size={20} />
+        </button>
+        <button
+          onClick={() => scroll("right")}
+          className=" -translate-y-1/2 p-2.5 rounded-full bg-white/30 hover:bg-black transition z-10"
+        >
+          <IoChevronForward size={20} />
+        </button>
+      </div>
+    </>
   );
 };
 

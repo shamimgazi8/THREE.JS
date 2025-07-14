@@ -2,7 +2,7 @@
 
 const HeroText = () => {
   return (
-    <div className="text-center mt-[260px]">
+    <div className="text-center ">
       <h1 className="text-4xl md:text-6xl font-semibold mb-2">
         Strength. Beauty.
       </h1>
