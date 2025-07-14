@@ -41,9 +41,9 @@ const Home = () => {
 
       {/* Section 2 */}
       <section className="mt-[200px]">
-        <div className="flex justify-center items-center flex-col">
+        <div className="flex justify-center items-center flex-col text-center md:text-left">
           <GradientText text={"Apple Intelligence."} />
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold">
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold">
             AI-opening possibilities
           </h1>
           <div className="mt-[100px]">
@@ -57,6 +57,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       {/* Section 3 */}
       <section className=" mt-[200px]">
         <div className="relative bg-black overflow-hidden">
@@ -70,16 +71,19 @@ const Home = () => {
       {/* Section 4 */}
       <section className="flex justify-center items-center flex-col w-[65%] m-auto">
         <HeroText />
-        <div>
+
+        <div className="w-full mt-[100px]">
           <Image
             src={"/iphone-cover.png"}
             alt="iphone cover"
-            height={800}
             width={1500}
-            className="object-cover mt-[100px]"
+            height={800}
+            className="object-cover"
+            layout="responsive"
           />
         </div>
       </section>
+
       <section className=" min-h-screen bg-gradient-to-t from-[#131313] to-transparent">
         <ProductivityTabsSection />
       </section>

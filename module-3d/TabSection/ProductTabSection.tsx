@@ -44,7 +44,7 @@ const tabData = [
               , so you can get the most important info at a glance.
             </p>
             {/* Audio Waveform Placeholder */}
-            <div className="bg-gray-800 rounded-full h-12 flex items-center justify-between px-4">
+            <div className="bg-black rounded-full h-12 flex items-center justify-between px-4">
               <div className="w-3/4 h-2 bg-gray-600 rounded-full"></div>
               <span className="text-sm text-gray-400">06:54</span>
               <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
@@ -73,7 +73,7 @@ const tabData = [
               your flight this afternoon.
             </p>
             {/* iPhone Mail Screen Placeholder */}
-            <div className="relative w-full h-48 bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
+            <div className="relative w-full h-48 bg-black rounded-lg overflow-hidden flex items-center justify-center">
               <Image
                 src="/placeholder.png" // Placeholder for Mail Inbox screen
                 alt="iPhone mail inbox screen"
@@ -126,7 +126,7 @@ const tabData = [
               , so you can get the most important info at a glance.
             </p>
             {/* Audio Waveform Placeholder */}
-            <div className="bg-gray-800 rounded-full h-12 flex items-center justify-between px-4">
+            <div className="bg-black rounded-full h-12 flex items-center justify-between px-4">
               <div className="w-3/4 h-2 bg-gray-600 rounded-full"></div>
               <span className="text-sm text-gray-400">06:54</span>
               <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
@@ -155,7 +155,7 @@ const tabData = [
               your flight this afternoon.
             </p>
             {/* iPhone Mail Screen Placeholder */}
-            <div className="relative w-full h-48 bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
+            <div className="relative w-full h-48 bg-black rounded-lg overflow-hidden flex items-center justify-center">
               <Image
                 src="/placeholder.png" // Placeholder for Mail Inbox screen
                 alt="iPhone mail inbox screen"
@@ -209,7 +209,7 @@ const tabData = [
               , so you can get the most important info at a glance.
             </p>
             {/* Audio Waveform Placeholder */}
-            <div className="bg-gray-800 rounded-full h-12 flex items-center justify-between px-4">
+            <div className="bg-black rounded-full h-12 flex items-center justify-between px-4">
               <div className="w-3/4 h-2 bg-gray-600 rounded-full"></div>
               <span className="text-sm text-gray-400">06:54</span>
               <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
@@ -238,7 +238,7 @@ const tabData = [
               your flight this afternoon.
             </p>
             {/* iPhone Mail Screen Placeholder */}
-            <div className="relative w-full h-48 bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
+            <div className="relative w-full h-48 bg-black rounded-lg overflow-hidden flex items-center justify-center">
               <Image
                 src="/placeholder.png" // Placeholder for Mail Inbox screen
                 alt="iPhone mail inbox screen"
@@ -258,40 +258,47 @@ const ProductivityTabsSection = () => {
   const [activeTab, setActiveTab] = useState("productivity"); // State to manage active tab
 
   return (
-    <div className=" text-white py-16 px-4 md:px-8 lg:px-16">
+    <div className="text-white py-16 px-4 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto text-center">
-        {/* Tabs List */}
-        <Tabs
-          defaultValue={activeTab}
-          onValueChange={setActiveTab}
-          className="w-full"
-        >
-          {/* Tabs List */}
-          <TabsList className="grid w-[70%] m-auto grid-cols-1 sm:grid-cols-3 gap-[100px] bg-transparent">
+        {/* ✅ Tabs component - only for md and up */}
+        <div className="hidden md:block">
+          <Tabs defaultValue="productivity" className="w-full">
+            {/* Tabs List */}
+            <TabsList className="grid w-[70%] m-auto grid-cols-1 sm:grid-cols-3 gap-[100px] bg-transparent">
+              {tabData.map((tab) => (
+                <TabsTrigger
+                  key={tab.id}
+                  value={tab.id}
+                  className="py-3 px-2 text-lg font-semibold text-white/40 border-b-[2px] border-white/30 data-[state=active]:border-white border-x-0 border-t-0 rounded-none transition-colors duration-200 data-[state=active]:text-white data-[state=active]:bg-transparent select-none cursor-pointer"
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* Heading */}
+            <h2 className="text-lg font-bold mt-12 mb-5 px-4 select-none">
+              Explore new tools that help you write, focus, and communicate.
+            </h2>
+
+            {/* Tabs Content */}
             {tabData.map((tab) => (
-              <TabsTrigger
-                key={tab.id}
-                value={tab.id}
-                className="py-3 px-2 text-lg font-semibold text-white/40 border-b-[2px] border-white/30 data-[state=active]:border-white border-x-0 border-t-0 rounded-none transition-colors duration-200 data-[state=active]:text-white data-[state=active]:bg-transparent select-none cursor-pointer"
-              >
-                {tab.label}
-              </TabsTrigger>
+              <TabsContent key={tab.id} value={tab.id} className="mt-8">
+                {tab.content}
+              </TabsContent>
             ))}
-          </TabsList>
+          </Tabs>
+        </div>
 
-          {/* Dynamic Heading */}
-          <h2 className="text-lg font-bold mt-12 mb-5 px-4 select-none">
-            {tabData.find((t) => t.id === activeTab)?.heading ??
-              "Explore new tools and experiences."}
-          </h2>
-
-          {/* Tabs Content */}
+        {/* ✅ Mobile version - only for <md: show all content stacked */}
+        <div className="block md:hidden space-y-20">
           {tabData.map((tab) => (
-            <TabsContent key={tab.id} value={tab.id} className="mt-8">
+            <div key={tab.id} className="text-left">
+              <h2 className="text-xl font-bold mb-6">{tab.label}</h2>
               {tab.content}
-            </TabsContent>
+            </div>
           ))}
-        </Tabs>
+        </div>
       </div>
     </div>
   );
