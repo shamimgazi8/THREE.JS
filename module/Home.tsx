@@ -7,6 +7,8 @@ import GradientText from "@/module-3d/text effect/GradientText";
 import Image from "next/image";
 import DetailsSection from "@/module-3d/DetailsSection/DetailsSections";
 import ProductivityTabsSection from "@/module-3d/TabSection/ProductTabSection";
+import CompareSection from "@/module-3d/CompareSection/CompareSection";
+import AdvertisementPro from "@/module-3d/Advertisement/ProAdvertisement";
 
 const Home = () => {
   const firstSectionRef = useRef<HTMLElement | null>(null);
@@ -84,8 +86,19 @@ const Home = () => {
         </div>
       </section>
 
-      <section className=" min-h-screen bg-gradient-to-t from-[#131313] to-transparent">
+      <section className=" min-h-screen bg-gradient-to-t from-[#1d1d1f] to-transparent">
         <ProductivityTabsSection />
+      </section>
+      <section className=" bg-[#1d1d1f] p-10">
+        <div className=" w-[80%] m-auto">
+          <h1 className=" text-5xl 5 mb-10 font-semibold ">
+            Keep exploring iPhone.
+          </h1>
+        </div>
+        <CompareSection />
+      </section>
+      <section>
+        <AdvertisementPro />
       </section>
     </>
   );
