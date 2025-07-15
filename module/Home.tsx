@@ -70,11 +70,11 @@ const Home = () => {
 
         <div className="w-full mt-[100px]">
           <Image
-            src={"/bike/remove1.png"}
+            src={"/bike/remove.png"}
             alt="iphone cover"
             width={1900}
             height={800}
-            className="object-cover "
+            className="object-cover translate-x-[150px]"
             layout="responsive"
           />
         </div>
