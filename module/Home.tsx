@@ -9,6 +9,7 @@ import DetailsSection from "@/module-3d/DetailsSection/DetailsSections";
 import ProductivityTabsSection from "@/module-3d/TabSection/ProductTabSection";
 import CompareSection from "@/module-3d/CompareSection/CompareSection";
 import AdvertisementPro from "@/module-3d/Advertisement/ProAdvertisement";
+import ScrollAnimatedImage from "@/module-3d/ScrollAnimatedImage/ScrollAnimatedImage";
 
 const Home = () => {
   const firstSectionRef = useRef<HTMLElement | null>(null);
@@ -49,15 +50,7 @@ const Home = () => {
           <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold">
             Ride the Future
           </h1>
-          <div className="">
-            <Image
-              src={"/bike/remove.png"}
-              alt="iphone cover"
-              height={1200}
-              width={1900}
-              className="object-cover"
-            />
-          </div>
+          <ScrollAnimatedImage />
         </div>
       </section>
 
