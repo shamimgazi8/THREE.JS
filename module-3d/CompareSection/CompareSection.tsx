@@ -9,32 +9,34 @@ const CompareSection = () => {
           {/* iPhone 16 Pro */}
           <div className="flex flex-col items-center">
             <Image
-              src="/placeholder2.png"
+              src="/bike/bike_red_1.png"
               alt="iPhone 16 Pro"
-              width={250}
+              width={450}
               height={500}
-              className="mb-4"
+              className="mb-4 object-cover"
             />
-            <h2 className="text-xl font-semibold">iPhone 16 Pro</h2>
+            <h2 className="text-xl font-semibold">Electric O3</h2>
             <p className="text-sm text-white/70">
-              From $999 or $41.62/mo. for 24 mo.
+              From $1,950 or $41.62/mo. for 24 mo.
             </p>
-            <p className="text-xs mt-1">Currently viewing</p>
+            <button className="text-black bg-blue-500 hover:bg-blue-600 text-sm rounded-full px-4 py-1 mt-2">
+              Learn more
+            </button>
             <button className="text-blue-500 text-sm mt-2">Buy &gt;</button>
           </div>
 
           {/* iPhone 16 */}
           <div className="flex flex-col items-center">
             <Image
-              src="/placeholder2.png"
+              src="/bike/bike_golden_1.png"
               alt="iPhone 16"
-              width={250}
+              width={450}
               height={500}
-              className="mb-4"
+              className="mb-4 object-cover"
             />
-            <h2 className="text-xl font-semibold">iPhone 16</h2>
+            <h2 className="text-xl font-semibold">Electric O3 PRO</h2>
             <p className="text-sm text-white/70">
-              From $799 or $33.29/mo. for 24 mo.
+              From $2,400 or $33.29/mo. for 24 mo.
             </p>
             <button className="text-black bg-blue-500 hover:bg-blue-600 text-sm rounded-full px-4 py-1 mt-2">
               Learn more

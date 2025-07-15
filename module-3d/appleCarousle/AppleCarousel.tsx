@@ -6,20 +6,20 @@ import Image from "next/image";
 
 const slides = [
   {
-    img: "/placeholder.png",
+    img: "/bike/bike_pro_2.png",
     title: "iPhone 16 Pro Max has our largest iPhone display ever",
   },
   {
-    img: "/placeholder.png",
-    title: "The thinnest borders on any Apple product",
+    img: "/bike/bike_red_3.png",
+    title: "Four striking colors, from Black Titanium to new Desert Titanium",
   },
   {
-    img: "/placeholder.png",
+    img: "/bike/bike_red_2.png",
     title: "Premium Grade 5 titanium is exceptionally durable",
   },
   {
-    img: "/placeholder.png",
-    title: "Four striking colors, from Black Titanium to new Desert Titanium",
+    img: "/bike/bike_pro_4.png",
+    title: "The thinnest borders on any Apple product",
   },
 ];
 
@@ -65,16 +65,16 @@ const AppleCarousel = () => {
         >
           {slides.map((slide, index) => (
             <div key={index} className="snap-center">
-              <div className="md:h-[580px] md:w-[560px] h-[280px] w-[260px] overflow-hidden  rounded-3xl relative">
+              <div className="md:h-[580px] md:w-[560px] h-[280px] w-[260px] overflow-hidden rounded-3xl relative">
                 <Image
                   src={slide.img}
                   alt={`iPhone ${index + 1}`}
-                  width={560}
-                  height={580}
-                  objectFit="contain"
-                  className="rounded-xl"
+                  fill
+                  className="object-cover rounded-3xl"
+                  priority
                 />
               </div>
+
               <p className="text-[18px] font-semibold mt-5 text-[#ebc9b6] text-start w-[70%]">
                 {slide.title}
               </p>

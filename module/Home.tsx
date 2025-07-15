@@ -38,22 +38,23 @@ const Home = () => {
     <>
       {/* Section 1: iPhone Model */}
       <section ref={firstSectionRef}>
-        <IphoneModel hideControls={hideControls} />
+        {/* <IphoneModel hideControls={hideControls} /> */}
+        <div className="h-screen w-full bg-[url('/bike/bike_golden_1.png')] bg-cover bg-center"></div>
       </section>
 
       {/* Section 2 */}
       <section className="mt-[200px]">
         <div className="flex justify-center items-center flex-col text-center md:text-left">
-          <GradientText text={"Apple Intelligence."} />
+          <GradientText text={"The O3 Series"} />
           <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold">
-            AI-opening possibilities
+            Ride the Future
           </h1>
-          <div className="mt-[100px]">
+          <div className="">
             <Image
-              src={"/iphone-hand.png"}
+              src={"/bike/remove.png"}
               alt="iphone cover"
-              height={800}
-              width={800}
+              height={1200}
+              width={1900}
               className="object-cover"
             />
           </div>
@@ -76,7 +77,7 @@ const Home = () => {
 
         <div className="w-full mt-[100px]">
           <Image
-            src={"/iphone-cover.png"}
+            src={"/bike/remove1.png"}
             alt="iphone cover"
             width={1900}
             height={800}
@@ -92,7 +93,7 @@ const Home = () => {
       <section className=" bg-[#1d1d1f] md:p-10 p-2">
         <div className=" w-[80%] m-auto">
           <h1 className=" md:text-5xl text-2xl 5 mb-10 font-semibold ">
-            Keep exploring iPhone.
+            Keep exploring O3 & O3 PRO.
           </h1>
         </div>
         <CompareSection />

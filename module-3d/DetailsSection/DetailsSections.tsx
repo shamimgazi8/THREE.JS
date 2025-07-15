@@ -7,10 +7,10 @@ const DetailsSection = () => {
   return (
     <div className=" text-white ">
       {/* Top Text Columns */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div className=" md:flex block justify-around gap-8 mb-16 w-[80%] m-auto">
         {/* Left Column Text */}
-        <div className="mx-auto md:mx-0 md:w-[70%] text-center md:text-left">
-          <p className="text-[20px] leading-relaxed text-white/50 font-semibold">
+        <div className="md:w-[30%] text-center md:text-left">
+          <p className="md:text-[20px] leading-relaxed text-white/50 font-semibold">
             iPhone 16 Pro features a Grade 5 titanium design with a new, refined
             brushed texture. Titanium has one of the highest strength-to-weight
             ratios of any metal, making these models{" "}
@@ -23,7 +23,7 @@ const DetailsSection = () => {
         </div>
 
         {/* Right Column Text */}
-        <div className="mx-auto md:mx-0 md:w-[70%] text-center md:text-left">
+        <div className="md:w-[30%]  text-center md:text-left">
           <p className="text-[20px] leading-relaxed text-white/50 font-semibold">
             Internal design improvements — including a 100 percent recycled
             aluminum thermal substructure and back glass optimizations that
@@ -41,29 +41,32 @@ const DetailsSection = () => {
       <div className="w-full">
         <AppleCarousel />
       </div>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 mt-[50px]">
+      <div className=" md:flex block justify-around gap-8 mb-16 w-[80%] m-auto">
         {/* Left Column Text */}
-        <div className="mx-auto md:mx-0 md:w-[70%] text-center md:text-left">
-          <p className="text-[20px] leading-relaxed text-white/50 font-semibold">
-            New display technology allows us to route display data under active
-            pixels with no distortion, resulting in thinner borders for larger
-            6.3-inch and 6.9-inch{" "}
+        <div className="md:w-[30%] text-center md:text-left">
+          <p className="md:text-[20px] leading-relaxed text-white/50 font-semibold">
+            iPhone 16 Pro features a Grade 5 titanium design with a new, refined
+            brushed texture. Titanium has one of the highest strength-to-weight
+            ratios of any metal, making these models{" "}
             <span className="font-semibold text-white">
-              Super Retina XDR displays
-            </span>{" "}
-            that feel great in your hand.
+              incredibly strong and impressively light
+            </span>
+            . iPhone 16 Pro comes in four stunning finishes — including new
+            Desert Titanium.
           </p>
         </div>
 
         {/* Right Column Text */}
-        <div className="mx-auto md:mx-0 md:w-[70%] text-center md:text-left ">
+        <div className="md:w-[30%]  text-center md:text-left">
           <p className="text-[20px] leading-relaxed text-white/50 font-semibold">
-            iPhone 16 Pro is splash, water, and dust resistant.⁴ It also has our
-            latest-generation Ceramic Shield material that’s{" "}
+            Internal design improvements — including a 100 percent recycled
+            aluminum thermal substructure and back glass optimizations that
+            further dissipate heat — enable up to 20 percent{" "}
             <span className="font-semibold text-white">
-              two times tougher than any smartphone glass.
+              better sustained performance
             </span>{" "}
-            Talk about durable.
+            than iPhone 15 Pro. So you can do all the things you love — like
+            high-intensity gaming — for longer.
           </p>
         </div>
       </div>

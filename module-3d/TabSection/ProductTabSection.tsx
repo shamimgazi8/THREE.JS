@@ -12,22 +12,26 @@ const tabData = [
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         {/* Left Column: iPhone Image and Writing Tools Text */}
         <div className="flex flex-col items-center">
-          <div className="relative w-full h-[600px] bg-black rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center p-4">
-            {/* Placeholder for iPhone screen content */}
+          <div className="relative w-full h-[600px] bg-black rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-4">
+            {/* Full-cover Image */}
             <Image
-              src="/placeholder.png" // Placeholder for iPhone screen
+              src="/bike/bike_red_1.png"
               alt="iPhone screen showing email draft"
-              width={300}
-              height={550}
-              className="object-contain rounded-2xl"
+              fill
+              className="object-cover rounded-2xl"
+              priority
             />
-            <p className="mt-8 text-[13px] font-semibold  text-white/60 max-w-md text-center leading-relaxed">
-              <span className="font-semibold text-white">Writing Tools</span>{" "}
-              can proofread your text and rewrite different versions until the
-              tone and wording are just right, and summarize selected text with
-              a tap. They&apos;re available nearly everywhere you write,
-              including third-party apps.
-            </p>
+
+            {/* Text Overlay */}
+            <div className="relative z-10 px-4 text-center max-w-md">
+              <p className="mt-[120%] text-[13px] font-semibold text-white/60 leading-relaxed">
+                <span className="font-semibold text-white">Writing Tools</span>{" "}
+                can proofread your text and rewrite different versions until the
+                tone and wording are just right, and summarize selected text
+                with a tap. They&apos;re available nearly everywhere you write,
+                including third-party apps.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -75,11 +79,11 @@ const tabData = [
             {/* iPhone Mail Screen Placeholder */}
             <div className="relative w-full h-48 bg-black rounded-lg overflow-hidden flex items-center justify-center">
               <Image
-                src="/placeholder.png" // Placeholder for Mail Inbox screen
+                src="/bike/bike_pro_3.png" // Placeholder for Mail Inbox screen
                 alt="iPhone mail inbox screen"
-                width={200}
-                height={300}
-                className="object-contain rounded-md"
+                fill
+                className=" object-cover"
+                priority
               />
             </div>
           </div>
@@ -89,28 +93,33 @@ const tabData = [
   },
   {
     id: "visual",
-    label: "Express yourself visually",
-    heading: "Create fun, original images that are truly personal to you.",
+    label: "Boost your productivity",
+    heading: "The Joy of Two Wheels",
     content: (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         {/* Left Column: iPhone Image and Writing Tools Text */}
         <div className="flex flex-col items-center">
-          <div className="relative w-full max-w-sm h-[600px] bg-black rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-4">
-            {/* Placeholder for iPhone screen content */}
+          <div className="relative w-full h-[600px] bg-black rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-4">
+            {/* Full-cover Image */}
             <Image
-              src="/placeholder.png" // Placeholder for iPhone screen
+              src="/bike/bike_red_2.png"
               alt="iPhone screen showing email draft"
-              width={300}
-              height={550}
-              className="object-contain rounded-2xl"
+              fill
+              className="object-cover rounded-2xl"
+              priority
             />
+
+            {/* Text Overlay */}
+            <div className="relative z-10 px-4 text-center max-w-md">
+              <p className="mt-[120%] text-[13px] font-semibold text-white/60 leading-relaxed">
+                <span className="font-semibold text-white">Writing Tools</span>{" "}
+                can proofread your text and rewrite different versions until the
+                tone and wording are just right, and summarize selected text
+                with a tap. They&apos;re available nearly everywhere you write,
+                including third-party apps.
+              </p>
+            </div>
           </div>
-          <p className="mt-8 text-base md:text-lg text-gray-300 max-w-md text-center leading-relaxed">
-            <span className="font-semibold">Writing Tools</span> can proofread
-            your text and rewrite different versions until the tone and wording
-            are just right, and summarize selected text with a tap. They&apos;re
-            available nearly everywhere you write, including third-party apps.
-          </p>
         </div>
 
         {/* Right Column: Feature Boxes */}
@@ -157,11 +166,11 @@ const tabData = [
             {/* iPhone Mail Screen Placeholder */}
             <div className="relative w-full h-48 bg-black rounded-lg overflow-hidden flex items-center justify-center">
               <Image
-                src="/placeholder.png" // Placeholder for Mail Inbox screen
+                src="/bike/bike_pro_2.png" // Placeholder for Mail Inbox screen
                 alt="iPhone mail inbox screen"
-                width={200}
-                height={300}
-                className="object-contain rounded-md"
+                fill
+                className=" object-cover"
+                priority
               />
             </div>
           </div>
@@ -171,29 +180,33 @@ const tabData = [
   },
   {
     id: "siri",
-    label: "The start of a new era for Siri",
-    heading:
-      "With all-new superpowers, Siri will be able to assist you like never before.",
+    label: "Boost your productivity",
+    heading: "The Joy of Two Wheels",
     content: (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         {/* Left Column: iPhone Image and Writing Tools Text */}
         <div className="flex flex-col items-center">
-          <div className="relative w-full max-w-sm h-[600px] bg-black rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-4">
-            {/* Placeholder for iPhone screen content */}
+          <div className="relative w-full h-[600px] bg-black rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-4">
+            {/* Full-cover Image */}
             <Image
-              src="/placeholder.png" // Placeholder for iPhone screen
+              src="/bike/bike_matt_1.png"
               alt="iPhone screen showing email draft"
-              width={300}
-              height={550}
-              className="object-contain rounded-2xl"
+              fill
+              className="object-cover rounded-2xl"
+              priority
             />
+
+            {/* Text Overlay */}
+            <div className="relative z-10 px-4 text-center max-w-md">
+              <p className="mt-[120%] text-[13px] font-semibold text-white/60 leading-relaxed">
+                <span className="font-semibold text-white">Writing Tools</span>{" "}
+                can proofread your text and rewrite different versions until the
+                tone and wording are just right, and summarize selected text
+                with a tap. They&apos;re available nearly everywhere you write,
+                including third-party apps.
+              </p>
+            </div>
           </div>
-          <p className="mt-8 text-base md:text-lg text-gray-300 max-w-md text-center leading-relaxed">
-            <span className="font-semibold">Writing Tools</span> can proofread
-            your text and rewrite different versions until the tone and wording
-            are just right, and summarize selected text with a tap. They&apos;re
-            available nearly everywhere you write, including third-party apps.
-          </p>
         </div>
 
         {/* Right Column: Feature Boxes */}
@@ -240,11 +253,11 @@ const tabData = [
             {/* iPhone Mail Screen Placeholder */}
             <div className="relative w-full h-48 bg-black rounded-lg overflow-hidden flex items-center justify-center">
               <Image
-                src="/placeholder.png" // Placeholder for Mail Inbox screen
+                src="/bike/bike_pro_4.png" // Placeholder for Mail Inbox screen
                 alt="iPhone mail inbox screen"
-                width={200}
-                height={300}
-                className="object-contain rounded-md"
+                fill
+                className=" object-cover"
+                priority
               />
             </div>
           </div>
