@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 // Main AdvertisementPro component
@@ -20,11 +21,11 @@ function AdvertisementPro() {
       <div className="relative z-10 text-center">
         {/* iPhone model text */}
         <p className="text-lg md:text-xl lg:text-2xl font-semibold mb-2">
-          iPhone 16 Pro
+          BRAX O3 Pro
         </p>
         {/* Tagline with increased font size and weight for emphasis */}
         <h1 className="text-3xl md:text-5xl lg:text-6xl  mb-8 glow-text2">
-          Built for Apple Intelligence.
+          Built for BRAX Intelligence.
         </h1>
 
         {/* Container for the phone image and the large "PRO" text */}
@@ -65,6 +66,16 @@ function AdvertisementPro() {
         <p className="text-sm md:text-base text-gray-400">
           From $899 or $41.62/mo. for 24 mo.<sup>1</sup>
         </p>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/4 z-50">
+          <Image
+            src="/bike/remove1.png"
+            alt="bike"
+            width={1600}
+            height={1200}
+            className="object-contain scale-[400%] translate-y-[-70px]"
+            priority
+          />
+        </div>
       </div>
     </div>
   );

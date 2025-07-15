@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="w-full md:w-[90%] lg:w-[60%] mx-auto flex items-center justify-between">
         <div className="font-semibold text-xl">
           {/* Typically, your logo/brand name would link to the homepage */}
-          <Link href="/">iPhone 16 Pro</Link>
+          <Link href="/">BRAX - O3 Pro</Link>
         </div>
 
         {/* Hamburger Icon for Mobile/Tablet */}

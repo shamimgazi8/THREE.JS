@@ -81,7 +81,7 @@ const Home = () => {
             alt="iphone cover"
             width={1900}
             height={800}
-            className="object-cover"
+            className="object-cover "
             layout="responsive"
           />
         </div>

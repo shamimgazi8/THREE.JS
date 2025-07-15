@@ -11,28 +11,30 @@ const DetailsSection = () => {
         {/* Left Column Text */}
         <div className="md:w-[30%] text-center md:text-left">
           <p className="md:text-[20px] leading-relaxed text-white/50 font-semibold">
-            iPhone 16 Pro features a Grade 5 titanium design with a new, refined
-            brushed texture. Titanium has one of the highest strength-to-weight
-            ratios of any metal, making these models{" "}
+            Engineering and Components Section: <br />
+            Built to Outlast and Outperform Body Copy Engineered with
+            premium-grade components to deliver the control, speed, and
+            durability expected from a{" "}
             <span className="font-semibold text-white">
-              incredibly strong and impressively light
-            </span>
-            . iPhone 16 Pro comes in four stunning finishes — including new
-            Desert Titanium.
+              modern dual-sport electric bike.
+            </span>{" "}
+            Hydraulic suspension Chain drive system Dual hydraulic disc brakes
+            Tubeless all-terrain tires
           </p>
         </div>
 
         {/* Right Column Text */}
         <div className="md:w-[30%]  text-center md:text-left">
           <p className="text-[20px] leading-relaxed text-white/50 font-semibold">
-            Internal design improvements — including a 100 percent recycled
-            aluminum thermal substructure and back glass optimizations that
-            further dissipate heat — enable up to 20 percent{" "}
+            Battery and Range Section Title Power That Lasts Body Copy Equipped
+            with a high-capacity lithium-ion battery system, the O3 Pro delivers
+            up to 75 miles per charge. Built for speed, range, and reliability.
+            Removable battery 3.5-hour charge time Regenerative braking 1,000+
+            charge cycles{" "}
             <span className="font-semibold text-white">
-              better sustained performance
+              highest strength-to-weight ratios
             </span>{" "}
-            than iPhone 15 Pro. So you can do all the things you love — like
-            high-intensity gaming — for longer.
+            of any metal, making these models{" "}
           </p>
         </div>
       </div>
@@ -45,28 +47,26 @@ const DetailsSection = () => {
         {/* Left Column Text */}
         <div className="md:w-[30%] text-center md:text-left">
           <p className="md:text-[20px] leading-relaxed text-white/50 font-semibold">
-            iPhone 16 Pro features a Grade 5 titanium design with a new, refined
-            brushed texture. Titanium has one of the highest strength-to-weight
-            ratios of any metal, making these models{" "}
+            With a 33-inch seat height and lightweight chassis, the O3 series is
+            balanced, agile, and built to handle both city streets and dirt
+            trails.{" "}
             <span className="font-semibold text-white">
-              incredibly strong and impressively light
-            </span>
-            . iPhone 16 Pro comes in four stunning finishes — including new
-            Desert Titanium.
+              120kg weight 33-inch seat height 220lbs max load Available
+            </span>{" "}
+            in Black, Red, or White
           </p>
         </div>
 
         {/* Right Column Text */}
         <div className="md:w-[30%]  text-center md:text-left">
           <p className="text-[20px] leading-relaxed text-white/50 font-semibold">
-            Internal design improvements — including a 100 percent recycled
-            aluminum thermal substructure and back glass optimizations that
-            further dissipate heat — enable up to 20 percent{" "}
+            Connect your ride with our Bluetooth app integration. Switch between
+            ride modes, monitor stats, and customize performance on demand.
             <span className="font-semibold text-white">
-              better sustained performance
+              {" "}
+              Digital LCD display Eco, Sport,
             </span>{" "}
-            than iPhone 15 Pro. So you can do all the things you love — like
-            high-intensity gaming — for longer.
+            Boost modes Optional GPS Speed, battery, trip, and mode display
           </p>
         </div>
       </div>

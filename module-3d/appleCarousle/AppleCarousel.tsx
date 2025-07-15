@@ -7,19 +7,20 @@ import Image from "next/image";
 const slides = [
   {
     img: "/bike/bike_pro_2.png",
-    title: "iPhone 16 Pro Max has our largest iPhone display ever",
+    title:
+      "Equipped with a high-capacity lithum-ion battery system, the O3 Pro delivery up to 75 miles per charge.",
   },
   {
     img: "/bike/bike_red_3.png",
-    title: "Four striking colors, from Black Titanium to new Desert Titanium",
+    title: "Build for speed, range, and reliability",
   },
   {
     img: "/bike/bike_red_2.png",
-    title: "Premium Grade 5 titanium is exceptionally durable",
+    title: "Hydraulic suspension and Chain drive system",
   },
   {
     img: "/bike/bike_pro_4.png",
-    title: "The thinnest borders on any Apple product",
+    title: "Dual hydraulic disc brakes and Tubeless all-terrain tires",
   },
 ];
 
