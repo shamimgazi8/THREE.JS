@@ -1,7 +1,13 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls, useGLTF, Html } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  useGLTF,
+  Html,
+  useProgress,
+} from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
 import ColorDot from "./ColorDot";
 import { motion, useInView, Variants } from "framer-motion";
@@ -20,6 +26,7 @@ const colorOptions = [
   { color: "#4F352D", name: "Blue Titanium" },
 ];
 
+// Model component
 function Model({
   scale,
   triggerRotation,
@@ -65,6 +72,24 @@ function Model({
   );
 }
 
+// Loader overlay component
+function LoaderUI() {
+  const { progress } = useProgress();
+
+  return (
+    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/70 backdrop-blur-sm">
+      <div className="w-64 h-3 bg-neutral-800 rounded-full overflow-hidden mb-4">
+        <div
+          className="bg-white h-full transition-all duration-300"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+      <p className="text-white text-sm">Loading... {Math.floor(progress)}%</p>
+    </div>
+  );
+}
+
+// Main Model3d component
 export default function Model3d({
   hideControls,
   initialScale = 0.04,
@@ -72,6 +97,8 @@ export default function Model3d({
 }: Model3dProps) {
   const [scale, setScale] = useState(initialScale);
   const [selectedColor, setSelectedColor] = useState(colorOptions[0]);
+  const [triggerRotation, setTriggerRotation] = useState(false);
+  const [envLoaded, setEnvLoaded] = useState(false);
 
   const canvasContainerRef = useRef(null);
   const isInView = useInView(canvasContainerRef, {
@@ -79,8 +106,7 @@ export default function Model3d({
     once: false,
   });
 
-  const [triggerRotation, setTriggerRotation] = useState(false);
-  const [envLoaded, setEnvLoaded] = useState(false);
+  const { progress } = useProgress();
 
   useEffect(() => {
     if (isInView && !hideControls) {
@@ -142,44 +168,39 @@ export default function Model3d({
         Take a closer look.
       </h1>
 
-      <div className="h-[75%]" ref={canvasContainerRef}>
+      <div className="h-[75%] relative" ref={canvasContainerRef}>
         {isInView && (
-          <Canvas
-            camera={{ position: [0, 0, cameraPositionZ], fov: 45 }}
-            dpr={[1, 2]}
-            shadows
-          >
-            <ambientLight intensity={0.8} />
-            <directionalLight position={[2, 4, 4]} intensity={2} />
-
-            <Suspense
-              fallback={
-                <Html>
-                  <div className="flex items-center justify-center h-full w-full mb-5">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-gray-900" />
-                  </div>
-                  Loading...
-                </Html>
-              }
+          <>
+            <Canvas
+              camera={{ position: [0, 0, cameraPositionZ], fov: 45 }}
+              dpr={[1, 2]}
+              shadows
             >
-              <Model
-                scale={scale}
-                triggerRotation={triggerRotation}
-                onRotateComplete={() => {}}
-              />
-            </Suspense>
+              <ambientLight intensity={0.8} />
+              <directionalLight position={[2, 4, 4]} intensity={2} />
 
-            {envLoaded && (
               <Suspense fallback={null}>
-                <Environment
-                  files="/hdr/dikhololo_night_1k.hdr"
-                  background={false}
+                <Model
+                  scale={scale}
+                  triggerRotation={progress === 100 && triggerRotation}
+                  onRotateComplete={() => {}}
                 />
               </Suspense>
-            )}
 
-            <OrbitControls enableZoom={false} target={[0, 0, 0]} />
-          </Canvas>
+              {envLoaded && (
+                <Suspense fallback={null}>
+                  <Environment
+                    files="/hdr/dikhololo_night_1k.hdr"
+                    background={false}
+                  />
+                </Suspense>
+              )}
+
+              <OrbitControls enableZoom={false} target={[0, 0, 0]} />
+            </Canvas>
+
+            {progress < 100 && <LoaderUI />}
+          </>
         )}
       </div>
 
