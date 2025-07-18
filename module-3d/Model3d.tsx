@@ -4,14 +4,13 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls, useGLTF, Html } from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
 import ColorDot from "./ColorDot";
-import SizeSelector from "./SizeSelector";
 import { motion, useInView, Variants } from "framer-motion";
 import * as THREE from "three";
 
 interface Model3dProps {
   hideControls?: boolean;
-  initialScale?: number; // New prop for model scale
-  cameraPositionZ?: number; // New prop for camera Z distance
+  initialScale?: number;
+  cameraPositionZ?: number;
 }
 
 const colorOptions = [
@@ -73,7 +72,6 @@ export default function Model3d({
 }: Model3dProps) {
   const [scale, setScale] = useState(initialScale);
   const [selectedColor, setSelectedColor] = useState(colorOptions[0]);
-  const [selectedSize, setSelectedSize] = useState("6.3");
 
   const canvasContainerRef = useRef(null);
   const isInView = useInView(canvasContainerRef, {
@@ -100,13 +98,15 @@ export default function Model3d({
 
   useGLTF.preload("/bike/bike3d.glb");
 
-  // Responsive scaling based on initialScale prop
   useEffect(() => {
+    const baseScale = initialScale;
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 640) setScale(initialScale * 0.6);
-      else if (width < 1024) setScale(initialScale * 0.8);
-      else setScale(initialScale);
+      let newScale = baseScale;
+      if (width < 480) newScale = baseScale * 0.5;
+      else if (width < 768) newScale = baseScale * 0.7;
+      else if (width < 1024) newScale = baseScale * 0.85;
+      setScale(newScale);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -137,8 +137,8 @@ export default function Model3d({
   };
 
   return (
-    <div className="h-screen w-full overflow-hidden bg-black text-white relative p-10">
-      <h1 className="text-[32px] sm:text-[56px] font-semibold pt-8 ml-[80px]">
+    <div className="h-screen w-full overflow-hidden bg-black text-white relative p-4 sm:p-10">
+      <h1 className="text-[28px] sm:text-[48px] font-semibold pt-4 sm:pt-8 ml-4 sm:ml-[80px]">
         Take a closer look.
       </h1>
 
@@ -155,7 +155,10 @@ export default function Model3d({
             <Suspense
               fallback={
                 <Html>
-                  <p className="text-white">Loading model...</p>
+                  <div className="flex items-center justify-center h-full w-full mb-5">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-gray-900" />
+                  </div>
+                  Loading...
                 </Html>
               }
             >
@@ -179,6 +182,7 @@ export default function Model3d({
           </Canvas>
         )}
       </div>
+
       {!hideControls && (
         <motion.div
           variants={containerVariants}

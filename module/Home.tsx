@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import IphoneModel from "@/module-3d/Model3d";
 import HeroText from "@/module-3d/text effect/Textcompo";
 import GradientText from "@/module-3d/text effect/GradientText";
@@ -10,7 +10,8 @@ import ProductivityTabsSection from "@/module-3d/TabSection/ProductTabSection";
 import CompareSection from "@/module-3d/CompareSection/CompareSection";
 import AdvertisementPro from "@/module-3d/Advertisement/ProAdvertisement";
 import ScrollAnimatedImage from "@/module-3d/ScrollAnimatedImage/ScrollAnimatedImage";
-import Model3d from "@/module-3d/Model3d";
+// import Model3d from "@/module-3d/Model3d";
+const Model3d = lazy(() => import("@/module-3d/Model3d")); // Lazy load the 3D component
 import Loader from "@/module-3d/Loader/Loading";
 
 const Home = () => {
