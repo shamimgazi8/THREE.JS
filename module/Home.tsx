@@ -67,15 +67,13 @@ const Home = () => {
       {/* Section 4 */}
       <section className="flex justify-center items-center flex-col w-[85%] m-auto mt-15">
         <HeroText />
-
-        <div className="w-full mt-[100px]">
+        <div className="w-full md:mt-[100px]">
           <Image
-            src={"/bike/remove.png"}
-            alt="iphone cover"
+            src="/bike/remove.png"
+            alt="bike image without bg"
             width={1900}
             height={800}
-            className="object-cover translate-x-[150px]"
-            layout="responsive"
+            className="object-cover md:translate-x-[150px] translate-x-[50px] w-full h-auto"
           />
         </div>
       </section>
