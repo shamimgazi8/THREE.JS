@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import IphoneModel from "@/module-3d/Model3d";
 import HeroText from "@/module-3d/text effect/Textcompo";
 import GradientText from "@/module-3d/text effect/GradientText";
@@ -11,6 +11,7 @@ import CompareSection from "@/module-3d/CompareSection/CompareSection";
 import AdvertisementPro from "@/module-3d/Advertisement/ProAdvertisement";
 import ScrollAnimatedImage from "@/module-3d/ScrollAnimatedImage/ScrollAnimatedImage";
 import Model3d from "@/module-3d/Model3d";
+import Loader from "@/module-3d/Loader/Loading";
 
 const Home = () => {
   const firstSectionRef = useRef<HTMLElement | null>(null);
@@ -40,11 +41,14 @@ const Home = () => {
     <>
       {/* Section 1: iPhone Model */}
       <section ref={firstSectionRef}>
-        <Model3d
-          hideControls={hideControls}
-          initialScale={0.02}
-          cameraPositionZ={25}
-        />
+        <Suspense fallback={<Loader />}>
+          <Model3d
+            hideControls={hideControls}
+            initialScale={0.02}
+            cameraPositionZ={25}
+          />
+        </Suspense>
+
         {/* <div className="h-screen w-full bg-[url('/bike/bike_golden_1.png')] bg-cover bg-center"></div> */}
       </section>
 
