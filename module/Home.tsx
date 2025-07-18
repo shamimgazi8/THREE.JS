@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import IphoneModel from "@/module-3d/IphoneModel";
+import IphoneModel from "@/module-3d/Model3d";
 import HeroText from "@/module-3d/text effect/Textcompo";
 import GradientText from "@/module-3d/text effect/GradientText";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import ProductivityTabsSection from "@/module-3d/TabSection/ProductTabSection";
 import CompareSection from "@/module-3d/CompareSection/CompareSection";
 import AdvertisementPro from "@/module-3d/Advertisement/ProAdvertisement";
 import ScrollAnimatedImage from "@/module-3d/ScrollAnimatedImage/ScrollAnimatedImage";
+import Model3d from "@/module-3d/Model3d";
 
 const Home = () => {
   const firstSectionRef = useRef<HTMLElement | null>(null);
@@ -39,8 +40,12 @@ const Home = () => {
     <>
       {/* Section 1: iPhone Model */}
       <section ref={firstSectionRef}>
-        {/* <IphoneModel hideControls={hideControls} /> */}
-        <div className="h-screen w-full bg-[url('/bike/bike_golden_1.png')] bg-cover bg-center"></div>
+        <Model3d
+          hideControls={hideControls}
+          initialScale={0.02}
+          cameraPositionZ={25}
+        />
+        {/* <div className="h-screen w-full bg-[url('/bike/bike_golden_1.png')] bg-cover bg-center"></div> */}
       </section>
 
       {/* Section 2 */}
